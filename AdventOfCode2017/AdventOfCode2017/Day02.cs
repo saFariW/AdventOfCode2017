@@ -9,13 +9,8 @@ namespace AdventOfCode2017
         public static int Solution01(string input)
         {
             int sum = 0;
-            List<List<int>> lines = input
-                .Split(Environment.NewLine)
-                .Select(x => x.Split('\t')
-                .Select(y => Convert.ToInt32(y))
-                .ToList())
-                .ToList();
-            
+            var lines = ParseInput(input);
+
             foreach (var line in lines)
             {
                 int maxValue = Int32.MinValue;
@@ -32,6 +27,38 @@ namespace AdventOfCode2017
             }
 
             return sum;
+        }
+
+        public static int Solution02(string input)
+        {
+            int sum = 0;
+            var lines = ParseInput(input);
+
+            foreach (var line in lines)
+            {
+                for (int i = 0; i < line.Count; i++)
+                {
+                    for (int j = 0; j < line.Count; j++)
+                    {
+                        if (i != j)
+                        {
+                            if (line[i] % line[j] == 0)
+                                sum += line[i] / line[j];
+                        }
+                    }
+                }
+            }
+            return sum;
+        }
+
+        private static List<List<int>> ParseInput(string input)
+        {
+            return input
+                .Split(Environment.NewLine)
+                .Select(x => x.Split('\t')
+                .Select(y => Convert.ToInt32(y))
+                .ToList())
+                .ToList();
         }
     }
 }
