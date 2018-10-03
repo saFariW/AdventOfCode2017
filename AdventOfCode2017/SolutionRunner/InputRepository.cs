@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 
 namespace SolutionRunner
 {
@@ -12,6 +13,11 @@ namespace SolutionRunner
         public static string GetDay02Input()
         {
             return ConfigurationManager.AppSettings["inputDay02"];
+        }
+
+        public static int GetDay03Input()
+        {
+            return Convert.ToInt32(ConfigurationManager.AppSettings["inputDay03"]);
         }
     }
 }
