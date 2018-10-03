@@ -19,5 +19,10 @@ namespace SolutionRunner
         {
             return Convert.ToInt32(ConfigurationManager.AppSettings["inputDay03"]);
         }
+
+        public static string GetDay04Input()
+        {
+            return ConfigurationManager.AppSettings["inputDay04"];
+        }
     }
 }
