@@ -8,5 +8,10 @@ namespace SolutionRunner
         {
             return ConfigurationManager.AppSettings["inputDay01"];
         }
+
+        public static string GetDay02Input()
+        {
+            return ConfigurationManager.AppSettings["inputDay02"];
+        }
     }
 }
