@@ -13,8 +13,10 @@ namespace SolutionRunner
             //Console.WriteLine("Output day02 part 02: " + Day02.Solution02(InputRepository.GetDay02Input()));
             //Console.WriteLine("Output day03 part 01: " + Day03.Solution01(InputRepository.GetDay03Input()));
             //Console.WriteLine("Output day03 part 02: " + Day03.Solution02(InputRepository.GetDay03Input()));
-            Console.WriteLine("Output day04 part 01: " + Day04.Solution01(InputRepository.GetDay04Input()));
-            Console.WriteLine("Output day04 part 02: " + Day04.Solution02(InputRepository.GetDay04Input()));
+            //Console.WriteLine("Output day04 part 01: " + Day04.Solution01(InputRepository.GetDay04Input()));
+            //Console.WriteLine("Output day04 part 02: " + Day04.Solution02(InputRepository.GetDay04Input()));
+            //Console.WriteLine("Output day05 part 01: " + Day05.Solution01(InputRepository.GetDay05Input()));
+            Console.WriteLine("Output day05 part 02: " + Day05.Solution02(InputRepository.GetDay05Input()));
             Console.ReadKey();
         }
     }

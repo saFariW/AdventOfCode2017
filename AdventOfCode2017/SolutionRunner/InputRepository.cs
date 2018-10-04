@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 
 namespace SolutionRunner
 {
@@ -23,6 +25,14 @@ namespace SolutionRunner
         public static string GetDay04Input()
         {
             return ConfigurationManager.AppSettings["inputDay04"];
+        }
+
+        public static List<int> GetDay05Input()
+        {
+            return ConfigurationManager.AppSettings["inputDay05"]
+                .Split(Environment.NewLine)
+                .Select(y => Convert.ToInt32(y))
+                .ToList(); ;
         }
     }
 }
