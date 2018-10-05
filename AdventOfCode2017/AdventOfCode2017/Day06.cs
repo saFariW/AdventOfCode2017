@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace AdventOfCode2017
+﻿namespace AdventOfCode2017
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class Day06
     {
         public static int Solution01(List<int> memoryBank)
@@ -21,13 +21,14 @@ namespace AdventOfCode2017
                 int bankSize = memoryBank[pos];
                 memoryBank[pos] = 0;
 
-                while(bankSize > 0)
+                while (bankSize > 0)
                 {
                     pos = GetNextPos(pos, memoryBank);
                     memoryBank[pos]++;
                     bankSize--;
                 }
             }
+
             return cycles;
         }
 
@@ -61,7 +62,10 @@ namespace AdventOfCode2017
         private static int GetNextPos(int currentPos, List<int> bank)
         {
             if (currentPos + 1 < bank.Count())
+            {
                 return currentPos + 1;
+            }
+
             return 0;
         }
 
@@ -77,6 +81,7 @@ namespace AdventOfCode2017
                     pos = i;
                 }
             }
+
             return pos;
         }
 
@@ -85,8 +90,11 @@ namespace AdventOfCode2017
             for (int i = 0; i < bankDb.Count; i++)
             {
                 if (bankDb[i].SequenceEqual(bank))
+                {
                     return i;
+                }
             }
+
             return -1;
         }
     }

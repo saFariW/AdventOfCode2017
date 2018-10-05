@@ -1,7 +1,8 @@
-﻿using System;
-
-namespace AdventOfCode2017
+﻿namespace AdventOfCode2017
 {
+    using System;
+    using System.Globalization;
+
     public static class Day01
     {
         public static int Solution01(string input)
@@ -11,9 +12,10 @@ namespace AdventOfCode2017
             {
                 if (input[i] == input[GetIndex(i, 1, input.Length)])
                 {
-                    sum += Convert.ToInt16(input[i].ToString());
+                    sum += Convert.ToInt16(Convert.ToString(input[i], CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
                 }
             }
+
             return sum;
         }
 
@@ -22,11 +24,12 @@ namespace AdventOfCode2017
             int sum = 0;
             for (int i = 0; i < input.Length; i++)
             {
-                if (input[i] == input[GetIndex(i, (input.Length /2), input.Length)])
+                if (input[i] == input[GetIndex(i, input.Length / 2, input.Length)])
                 {
-                    sum += Convert.ToInt16(input[i].ToString());
+                    sum += Convert.ToInt16(input[i].ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
                 }
             }
+
             return sum;
         }
 
@@ -35,7 +38,9 @@ namespace AdventOfCode2017
             int newIndex;
             newIndex = currentIndex + delta;
             if (newIndex >= arrayLenght)
+            {
                 newIndex -= arrayLenght;
+            }
 
             return newIndex;
         }

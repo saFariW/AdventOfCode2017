@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace AdventOfCode2017
+﻿namespace AdventOfCode2017
 {
+    using System.Collections.Generic;
+
     public static class Day05
     {
         public static int Solution01(List<int> instructions)
@@ -31,10 +31,14 @@ namespace AdventOfCode2017
             {
                 offset = instructions[pos];
 
-                if(offset >= 3)
+                if (offset >= 3)
+                {
                     instructions[pos] = offset - 1;
+                }
                 else
+                {
                     instructions[pos] = offset + 1;
+                }
 
                 pos += offset;
                 steps++;
