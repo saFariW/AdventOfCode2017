@@ -10,7 +10,7 @@ namespace AdventOfCode2017
             int cycles = 0;
             List<List<int>> bankDb = new List<List<int>>();
 
-            while (!BankHasOccured(bankDb, memoryBank))
+            while (GetOccuringBank(bankDb, memoryBank) == -1)
             {
                 cycles++;
 
@@ -29,6 +29,33 @@ namespace AdventOfCode2017
                 }
             }
             return cycles;
+        }
+
+        public static int Solution02(List<int> memoryBank)
+        {
+            int cycles = 0;
+            List<List<int>> bankDb = new List<List<int>>();
+
+            while (GetOccuringBank(bankDb, memoryBank) == -1)
+            {
+                cycles++;
+
+                // perform deep copy
+                bankDb.Add(memoryBank.ConvertAll(x => x));
+
+                int pos = GetLargestBankPos(memoryBank);
+                int bankSize = memoryBank[pos];
+                memoryBank[pos] = 0;
+
+                while (bankSize > 0)
+                {
+                    pos = GetNextPos(pos, memoryBank);
+                    memoryBank[pos]++;
+                    bankSize--;
+                }
+            }
+
+            return cycles - GetOccuringBank(bankDb, memoryBank);
         }
 
         private static int GetNextPos(int currentPos, List<int> bank)
@@ -53,21 +80,14 @@ namespace AdventOfCode2017
             return pos;
         }
 
-        private static bool BankHasOccured(List<List<int>> bankDb, List<int> bank)
+        private static int GetOccuringBank(List<List<int>> bankDb, List<int> bank)
         {
-            foreach (var oldBank in bankDb)
+            for (int i = 0; i < bankDb.Count; i++)
             {
-                if (oldBank.SequenceEqual(bank))
-                    return true;
+                if (bankDb[i].SequenceEqual(bank))
+                    return i;
             }
-            return false;
-        }
-
-
-        public static int Solution02(List<int> memoryBanks)
-        {
-
-            return 0;
+            return -1;
         }
     }
 }
