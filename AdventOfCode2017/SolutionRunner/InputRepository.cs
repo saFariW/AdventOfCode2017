@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 
 namespace SolutionRunner
@@ -9,27 +8,36 @@ namespace SolutionRunner
     {
         public static string GetDay01Input()
         {
-            return ConfigurationManager.AppSettings["inputDay01"];
+            return Properties.Resources.InputDay01;
         }
 
-        public static string GetDay02Input()
+        public static List<List<int>> GetDay02Input()
         {
-            return ConfigurationManager.AppSettings["inputDay02"];
+            return Properties.Resources.InputDay02
+                .Split(Environment.NewLine)
+                .Select(x => x.Split('\t')
+                .Select(y => Convert.ToInt32(y))
+                .ToList())
+                .ToList();
         }
 
         public static int GetDay03Input()
         {
-            return Convert.ToInt32(ConfigurationManager.AppSettings["inputDay03"]);
+            return Convert.ToInt32(Properties.Resources.InputDay03);
         }
 
-        public static string GetDay04Input()
+        public static List<List<string>> GetDay04Input()
         {
-            return ConfigurationManager.AppSettings["inputDay04"];
+            return Properties.Resources.InputDay04
+                .Split(Environment.NewLine)
+                .Select(x => x.Split(' ')
+                .ToList())
+                .ToList();
         }
 
         public static List<int> GetDay05Input()
         {
-            return ConfigurationManager.AppSettings["inputDay05"]
+            return Properties.Resources.InputDay05
                 .Split(Environment.NewLine)
                 .Select(y => Convert.ToInt32(y))
                 .ToList(); ;

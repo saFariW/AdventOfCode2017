@@ -1,18 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode2017
 {
     public static class Day04
     {
-        public static int Solution01(string input)
+        public static int Solution01(List<List<string>> passPhrases)
         {
-            var passPhrases = input
-                .Split(Environment.NewLine)
-                .Select(x => x.Split(' ')
-                .ToList())
-                .ToList();
-
             int totalCorrectPassPhrases = passPhrases.Count;
 
             for (int x = 0; x < passPhrases.Count; x++)
@@ -33,14 +28,8 @@ namespace AdventOfCode2017
             }
             return totalCorrectPassPhrases;
         }
-        public static int Solution02(string input)
+        public static int Solution02(List<List<string>> passPhrases)
         {
-            var passPhrases = input
-                .Split(Environment.NewLine)
-                .Select(x => x.Split(' ')
-                .ToList())
-                .ToList();
-
             int totalCorrectPassPhrases = passPhrases.Count;
 
             for (int x = 0; x < passPhrases.Count; x++)

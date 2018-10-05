@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2017", "AdventOfCode2017\AdventOfCode2017.csproj", "{F89EF1D2-0E12-40AC-9F9A-92CD33ED1E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionRunner", "SolutionRunner\SolutionRunner.csproj", "{1D86E168-9926-42A4-B200-37D340011888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionRunner", "SolutionRunner\SolutionRunner.csproj", "{1D86E168-9926-42A4-B200-37D340011888}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

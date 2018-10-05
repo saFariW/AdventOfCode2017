@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AdventOfCode2017
 {
     public static class Day02
     {
-        public static int Solution01(string input)
+        public static int Solution01(List<List<int>> lines)
         {
             int sum = 0;
-            var lines = ParseInput(input);
 
             foreach (var line in lines)
             {
@@ -29,16 +27,15 @@ namespace AdventOfCode2017
             return sum;
         }
 
-        public static int Solution02(string input)
+        public static int Solution02(List<List<int>> lines)
         {
             int sum = 0;
-            var lines = ParseInput(input);
 
             foreach (var line in lines)
             {
-                for (int i = 0; i < line.Count; i++)
+                for (int i = 0; i<line.Count; i++)
                 {
-                    for (int j = 0; j < line.Count; j++)
+                    for (int j = 0; j<line.Count; j++)
                     {
                         if (i != j)
                         {
@@ -49,16 +46,6 @@ namespace AdventOfCode2017
                 }
             }
             return sum;
-        }
-
-        private static List<List<int>> ParseInput(string input)
-        {
-            return input
-                .Split(Environment.NewLine)
-                .Select(x => x.Split('\t')
-                .Select(y => Convert.ToInt32(y))
-                .ToList())
-                .ToList();
         }
     }
 }
