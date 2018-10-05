@@ -39,7 +39,15 @@ namespace SolutionRunner
         {
             return Properties.Resources.InputDay05
                 .Split(Environment.NewLine)
-                .Select(y => Convert.ToInt32(y))
+                .Select(x => Convert.ToInt32(x))
+                .ToList(); ;
+        }
+
+        public static List<int> GetDay06Input()
+        {
+            return Properties.Resources.InputDay06
+                .Split('\t')
+                .Select(x => Convert.ToInt32(x))
                 .ToList(); ;
         }
     }

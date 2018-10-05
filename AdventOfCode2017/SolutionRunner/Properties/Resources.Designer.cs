@@ -233,5 +233,14 @@ namespace SolutionRunner.Properties {
                 return ResourceManager.GetString("InputDay05", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 14	0	15	12	11	11	3	5	1	6	8	4	9	1	8	4.
+        /// </summary>
+        internal static string InputDay06 {
+            get {
+                return ResourceManager.GetString("InputDay06", resourceCulture);
+            }
+        }
     }
 }
