@@ -51,5 +51,12 @@
                 .Select(x => Convert.ToInt32(x, CultureInfo.InvariantCulture))
                 .ToList();
         }
+
+        public static List<string> GetDay07Input()
+        {
+            return Properties.Resources.InputDay07
+                .Split(Environment.NewLine)
+                .ToList();
+        }
     }
 }

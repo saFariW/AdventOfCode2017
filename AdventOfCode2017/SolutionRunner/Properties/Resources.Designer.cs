@@ -242,5 +242,40 @@ namespace SolutionRunner.Properties {
                 return ResourceManager.GetString("InputDay06", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to occxa (60)
+        ///kozpul (59) -&gt; shavjjt, anujsv, tnzvo
+        ///dotyah (138) -&gt; tjhrdl, gdoxoc, aizbron
+        ///jgsvfsl (30)
+        ///eaxthh (5)
+        ///dwklefi (82)
+        ///rmlnt (199) -&gt; epepfyw, dwrnlgg
+        ///chrya (12)
+        ///cvpimoj (164) -&gt; eebyqij, vjipe, tdaxn
+        ///pfmegn (934) -&gt; netob, zsrao, xaslwy
+        ///tqbqd (79) -&gt; fjterk, qaryj
+        ///slgoac (81)
+        ///zoxjtzq (67)
+        ///qtwvlxq (81)
+        ///cpnoezu (81)
+        ///lwhywr (639) -&gt; qhqqpj, qrtdqj, mjhuaca
+        ///kuhvyy (59)
+        ///cidfsbr (81)
+        ///wwjtzuf (206)
+        ///mpflt (90)
+        ///ysofby (54)
+        ///ttktong (63)
+        ///cryim (43)
+        ///lgacwzo (17)
+        ///kuyofu (81)
+        ///fgont (20)
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string InputDay07 {
+            get {
+                return ResourceManager.GetString("InputDay07", resourceCulture);
+            }
+        }
     }
 }

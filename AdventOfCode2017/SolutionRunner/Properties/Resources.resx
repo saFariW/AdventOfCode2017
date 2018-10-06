@@ -134,6 +134,9 @@
     <value>..\InputFiles\InputDay05.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="InputDay06" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\InputFiles\inputDay06.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\InputFiles\InputDay06.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="InputDay07" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\InputFiles\InputDay07.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
