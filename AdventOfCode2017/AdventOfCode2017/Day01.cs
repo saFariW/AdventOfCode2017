@@ -7,24 +7,20 @@
     {
         public static int Solution01(string input)
         {
-            int sum = 0;
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (input[i] == input[GetIndex(i, 1, input.Length)])
-                {
-                    sum += Convert.ToInt16(Convert.ToString(input[i], CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
-                }
-            }
-
-            return sum;
+            return BasicSolution(input, 1);
         }
 
         public static int Solution02(string input)
         {
+            return BasicSolution(input, input.Length / 2);
+        }
+
+        public static int BasicSolution(string input, int delta)
+        {
             int sum = 0;
             for (int i = 0; i < input.Length; i++)
             {
-                if (input[i] == input[GetIndex(i, input.Length / 2, input.Length)])
+                if (input[i] == input[GetIndex(i, delta, input.Length)])
                 {
                     sum += Convert.ToInt16(input[i].ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
                 }
@@ -33,7 +29,7 @@
             return sum;
         }
 
-        private static int GetIndex(int currentIndex, int delta, int arrayLenght)
+        public static int GetIndex(int currentIndex, int delta, int arrayLenght)
         {
             int newIndex;
             newIndex = currentIndex + delta;

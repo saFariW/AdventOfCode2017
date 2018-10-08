@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Text.RegularExpressions;
 
-    // check if treesort might be something that would easy this solution / performance.
+    // check if tree sort might be something that would easy this solution / performance.
     public static class Day07
     {
         public static string Solution01(List<string> programsInput)
@@ -21,25 +21,27 @@
             {
                 for (int i = 0; i < programs.Count; i++)
                 {
+                    if (programs[i] == null)
+                    {
+                        continue;
+                    }
+
                     for (int j = 0; j < programs.Count; j++)
                     {
-                        if (programs[i] != null)
-                        {
-                            if (programs[j].TryInsertSubProgram(programs[i]))
-                            {
-                                programs[i] = null;
-                            }
-                        }
-                        else
+                        if (programs[j] == null)
                         {
                             continue;
+                        }
+
+                        if (programs[i].TryInsertSubProgram(programs[j]))
+                        {
+                            programs[j] = null;
                         }
                     }
                 }
 
                 programs.RemoveAll(x => x == null);
             }
-
 
             return programs.First().Name;
         }
