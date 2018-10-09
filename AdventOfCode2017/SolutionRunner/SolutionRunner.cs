@@ -19,7 +19,7 @@
             // Console.WriteLine("Output day05 part 02: " + Day05.Solution02(InputRepository.GetDay05Input()));
             // Console.WriteLine("Output day06 part 01: " + Day06.Solution01(InputRepository.GetDay06Input()));
             // Console.WriteLine("Output day06 part 02: " + Day06.Solution02(InputRepository.GetDay06Input()));
-            Console.WriteLine("Output day07 part 01: " + Day07.Solution01(InputRepository.GetDay07Input()));
+            Console.WriteLine("Output day07 part 01: " + Day07.Solution(InputRepository.GetDay07Input()));
             Console.ReadKey();
         }
     }

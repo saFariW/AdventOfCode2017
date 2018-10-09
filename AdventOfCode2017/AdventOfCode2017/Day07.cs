@@ -9,7 +9,7 @@
     // check if tree sort might be something that would easy this solution / performance.
     public static class Day07
     {
-        public static string Solution01(List<string> programsInput)
+        public static string Solution(List<string> programsInput)
         {
             List<Program> programs = new List<Program>();
             foreach (var programLine in programsInput)
@@ -43,7 +43,8 @@
                 programs.RemoveAll(x => x == null);
             }
 
-            return programs.First().Name;
+            var program = programs.First();
+            return "Name: " + program.Name + " Weight: " + program.GetWeight();
         }
 
         private static Program ParseProgramInput(string inputLine)
@@ -61,7 +62,7 @@
             return new Program(parsedInputLine[0], Convert.ToInt32(parsedInputLine[1], CultureInfo.InvariantCulture), subPrograms);
         }
 
-        private class Program
+        public class Program
         {
             public readonly string Name;
             private readonly int weight;
@@ -76,10 +77,18 @@
 
             public int GetWeight()
             {
+                var subProgramWeightValues = this.subPrograms.Select(x => x.GetWeight()).GroupBy(x => x)
+                    .Select(x => new { Value = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).ToList();
+
                 int subProgramsWeight = 0;
-                foreach (var subProgram in this.subPrograms)
+                if (subProgramWeightValues.Count > 0)
                 {
-                    subProgramsWeight += subProgram.GetWeight();
+                    subProgramsWeight = subProgramWeightValues.Select(x => x.Count).Sum() * subProgramWeightValues.First().Value;
+                    if (subProgramWeightValues.Count > 1)
+                    {
+                        // TODO MarWolt: Implement this as designed instead of this 'unintentional behavior'.
+                        Console.WriteLine("The incorrect value should have been : " + (this.weight - (subProgramWeightValues.First().Value - subProgramWeightValues.Last().Value)));
+                    }
                 }
 
                 return this.weight + subProgramsWeight;

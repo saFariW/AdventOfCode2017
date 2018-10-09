@@ -3,6 +3,7 @@ namespace UnitTests
     using System.Collections.Generic;
     using AdventOfCode2017;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using static AdventOfCode2017.Day07;
 
     [TestClass]
     public class TestDay07
@@ -25,7 +26,21 @@ namespace UnitTests
             parsedInput.Add("gyxo(61)");
             parsedInput.Add("cntj(57)");
 
-            Assert.AreEqual("tknk", Day07.Solution01(parsedInput));
+            Assert.AreEqual("Name: tknk Weight: 770", Day07.Solution(parsedInput));
+        }
+
+        [TestMethod]
+        public void TestProgramGetWeight()
+        {
+            var program =
+                new Program("test", 8, new List<Program>()
+            {
+                new Program("sub1", 10, new List<Program>()),
+                new Program("sub2", 10, new List<Program>()),
+                new Program("sub3", 9, new List<Program>())
+            });
+
+            Assert.AreEqual(38, program.GetWeight());
         }
     }
 }
