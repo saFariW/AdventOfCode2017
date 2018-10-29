@@ -44,7 +44,7 @@
             }
 
             var program = programs.First();
-            return "Name: " + program.Name + " Weight: " + program.GetWeight();
+            return "Name: " + program.Name + " Weight: " + program.GetTotalWeight();
         }
 
         private static Program ParseProgramInput(string inputLine)
@@ -64,34 +64,47 @@
 
         public class Program
         {
-            public readonly string Name;
-            private readonly int weight;
+            public string Name { get; }
+
+            public int Weight { get; }
+
             private readonly List<Program> subPrograms;
 
             public Program(string name, int weight, List<Program> subPrograms)
             {
                 this.Name = name;
-                this.weight = weight;
+                this.Weight = weight;
                 this.subPrograms = subPrograms;
             }
 
-            public int GetWeight()
+            /// <summary>
+            /// retrieves the total weight of this program.
+            /// </summary>
+            /// <remarks>
+            /// Will correct any faults in the balance of the programs sub's tree
+            /// </remarks>
+            /// <returns>the total weight of this program.</returns>
+            public int GetTotalWeight()
             {
-                var subProgramWeightValues = this.subPrograms.Select(x => x.GetWeight()).GroupBy(x => x)
-                    .Select(x => new { Value = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).ToList();
-
-                int subProgramsWeight = 0;
-                if (subProgramWeightValues.Count > 0)
+                if (this.subPrograms.Count() == 0)
                 {
-                    subProgramsWeight = subProgramWeightValues.Select(x => x.Count).Sum() * subProgramWeightValues.First().Value;
-                    if (subProgramWeightValues.Count > 1)
-                    {
-                        // TODO MarWolt: Implement this as designed instead of this 'unintentional behavior'.
-                        Console.WriteLine("The incorrect value should have been : " + (this.weight - (subProgramWeightValues.First().Value - subProgramWeightValues.Last().Value)));
-                    }
+                    return this.Weight;
                 }
 
-                return this.weight + subProgramsWeight;
+                var subProgramWeightValues = this.subPrograms.Select(x => x).GroupBy(x => x.GetTotalWeight()).OrderByDescending(x => x.Count()).ToList();
+
+                if (subProgramWeightValues.Count() > 1)
+                {
+                    // TODO MarWolt: Implement this as designed instead of this 'unintentional behavior'.
+                    // there is an assumption here that there is only 1 program that has the wrong weight.
+                    var unbalancedProgram = subProgramWeightValues.OrderByDescending(x => x.Count()).Last().Last();
+
+                    var diffrence = Math.Abs(subProgramWeightValues.First().First().GetTotalWeight() - unbalancedProgram.GetTotalWeight());
+
+                    Console.WriteLine("Unbalanced program new own weight is: " + (unbalancedProgram.Weight - diffrence));
+                }
+
+                return this.Weight + (this.subPrograms.Count() * subProgramWeightValues.First().First().GetTotalWeight());
             }
 
             public bool TryInsertSubProgram(Program program)

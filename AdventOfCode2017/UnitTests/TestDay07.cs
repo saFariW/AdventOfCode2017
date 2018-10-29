@@ -40,7 +40,7 @@ namespace UnitTests
                 new Program("sub3", 9, new List<Program>())
             });
 
-            Assert.AreEqual(38, program.GetWeight());
+            Assert.AreEqual(38, program.GetTotalWeight());
         }
     }
 }
