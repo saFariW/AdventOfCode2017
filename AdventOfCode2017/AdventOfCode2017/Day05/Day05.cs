@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2017
+﻿namespace AdventOfCode2017.Day05
 {
     using System.Collections.Generic;
 
