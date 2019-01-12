@@ -277,5 +277,35 @@ namespace SolutionRunner.Properties {
                 return ResourceManager.GetString("InputDay07", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kd dec -37 if gm &lt;= 9
+        ///x dec -715 if kjn == 0
+        ///ey inc 249 if x &lt; 722
+        ///n dec 970 if t &gt; 3
+        ///f dec -385 if msg &gt; -3
+        ///kd dec -456 if ic &lt;= -8
+        ///zv dec -745 if gub &lt;= 4
+        ///ic inc 705 if yp &gt; -6
+        ///lyr dec -970 if gm != 0
+        ///lyr inc 935 if j &gt;= 0
+        ///gm dec 716 if gm &lt; 9
+        ///kjn inc -897 if j &lt;= -9
+        ///j dec -824 if f != 384
+        ///x dec 741 if e &lt;= -6
+        ///f dec 617 if msg != 9
+        ///kjn inc 184 if ic &gt; 697
+        ///lyr dec 860 if x &lt;= 707
+        ///ey dec -785 if msg &lt; 2
+        ///lyr inc -226 if x != 720
+        ///t inc -689 if f != -242
+        ///riz inc -174 if f != -232
+        ///j inc 906 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string InputDay08 {
+            get {
+                return ResourceManager.GetString("InputDay08", resourceCulture);
+            }
+        }
     }
 }
