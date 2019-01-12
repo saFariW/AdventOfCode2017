@@ -16,10 +16,10 @@
             this.condition = new Condition(x[4], this.conditionParse(x[5]), int.Parse(x[6]));
         }
 
-        public void Execute(ref IDictionary<string, int> currentRegisters)
+        public void Execute(ref IDictionary<string, int> currentRegisters, ref int highestHeldValueOverAllTime)
         {
             if (this.condition.IsTrue(currentRegisters))
-                this.action.Execute(ref currentRegisters);
+                this.action.Execute(ref currentRegisters, ref highestHeldValueOverAllTime);
         }
 
         private ConditionType conditionParse(string stringconditon)
