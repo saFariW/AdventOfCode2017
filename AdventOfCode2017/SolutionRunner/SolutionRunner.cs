@@ -1,7 +1,7 @@
 ﻿namespace SolutionRunner
 {
     using System;
-    using AdventOfCode2017;
+    using AdventOfCode2017.Day08;
 
     public class SolutionRunner
     {
@@ -19,7 +19,8 @@
             // Console.WriteLine("Output day05 part 02: " + Day05.Solution02(InputRepository.GetDay05Input()));
             // Console.WriteLine("Output day06 part 01: " + Day06.Solution01(InputRepository.GetDay06Input()));
             // Console.WriteLine("Output day06 part 02: " + Day06.Solution02(InputRepository.GetDay06Input()));
-            Console.WriteLine("Output day07 " + Day07.Solution(InputRepository.GetDay07Input()));
+            // Console.WriteLine("Output day07 " + Day07.Solution(InputRepository.GetDay07Input()));
+            Console.WriteLine("Output day08 part 01: " + Day08.Solution01(InputRepository.GetDay08Input()));
             Console.ReadKey();
         }
     }
