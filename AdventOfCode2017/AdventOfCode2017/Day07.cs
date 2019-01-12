@@ -62,12 +62,8 @@
             return new Program(parsedInputLine[0], Convert.ToInt32(parsedInputLine[1], CultureInfo.InvariantCulture), subPrograms);
         }
 
-        public class Program
+        private class Program
         {
-            public string Name { get; }
-
-            public int Weight { get; }
-
             private readonly List<Program> subPrograms;
 
             public Program(string name, int weight, List<Program> subPrograms)
@@ -76,6 +72,10 @@
                 this.Weight = weight;
                 this.subPrograms = subPrograms;
             }
+
+            public string Name { get; }
+
+            public int Weight { get; }
 
             /// <summary>
             /// retrieves the total weight of this program.
