@@ -2,8 +2,8 @@ namespace UnitTests
 {
     using System.Collections.Generic;
     using AdventOfCode2017;
+    using AdventOfCode2017.Day07;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using static AdventOfCode2017.Day07;
 
     [TestClass]
     public class TestDay07
@@ -26,7 +26,7 @@ namespace UnitTests
             parsedInput.Add("gyxo(61)");
             parsedInput.Add("cntj(57)");
 
-            Assert.AreEqual("Name: tknk Weight: 770", Day07.Solution(parsedInput));
+            Assert.AreEqual("Name: tknk Weight: 770", SolutionDay07.Part01And02(parsedInput));
         }
 
         [TestMethod]

@@ -1,11 +1,11 @@
-﻿namespace AdventOfCode2017.Day06
+﻿namespace AdventOfCode2017
 {
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class Day06
+    public static class SolutionDay06
     {
-        public static int Solution01(List<int> memoryBank)
+        public static int Part01(List<int> memoryBank)
         {
             int cycles = 0;
             List<List<int>> bankDb = new List<List<int>>();
@@ -32,7 +32,7 @@
             return cycles;
         }
 
-        public static int Solution02(List<int> memoryBank)
+        public static int Part02(List<int> memoryBank)
         {
             int cycles = 0;
             List<List<int>> bankDb = new List<List<int>>();

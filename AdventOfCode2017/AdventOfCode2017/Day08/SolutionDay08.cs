@@ -1,11 +1,12 @@
-﻿namespace AdventOfCode2017.Day08
+﻿namespace AdventOfCode2017
 {
     using System.Collections.Generic;
     using System.Linq;
+    using AdventOfCode2017.Day08;
 
-    public static class Day08
+    public static class SolutionDay08
     {
-        public static string Solution(List<string> input)
+        public static string Part01And02(List<string> input)
         {
             int maxValueOverAllTime = int.MinValue;
             IDictionary<string, int> registers = new Dictionary<string, int>();

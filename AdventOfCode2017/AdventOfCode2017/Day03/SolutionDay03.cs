@@ -1,16 +1,16 @@
-﻿namespace AdventOfCode2017.Day03
+﻿namespace AdventOfCode2017
 {
     using System;
     using System.Collections.Generic;
 
-    public static class Day03
+    public static class SolutionDay03
     {
         private enum Direction
         {
             Up, Down, Left, Right
         }
 
-        public static int Solution01(int input)
+        public static int Part01(int input)
         {
             var grid = CreateGrid(input);
             var middle = new Point(grid.Count / 2, grid.Count / 2);
@@ -32,7 +32,7 @@
             return Math.Abs(middle.X - pos.X) + Math.Abs(middle.Y - pos.Y);
         }
 
-        public static int Solution02(int input)
+        public static int Part02(int input)
         {
             var grid = CreateGrid(input);
             var middle = new Point(grid.Count / 2, grid.Count / 2);

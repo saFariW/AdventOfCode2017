@@ -1,17 +1,17 @@
-﻿namespace AdventOfCode2017.Day04
+﻿namespace AdventOfCode2017
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class Day04
+    public static class SolutionDay04
     {
-        public static int Solution01(List<List<string>> passPhrases)
+        public static int Part01(List<List<string>> passPhrases)
         {
             return BasicSolution(passPhrases, Solution01Check);
         }
 
-        public static int Solution02(List<List<string>> passPhrases)
+        public static int Part02(List<List<string>> passPhrases)
         {
             return BasicSolution(passPhrases, Solution02Check);
         }

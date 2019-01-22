@@ -1,15 +1,17 @@
-﻿namespace AdventOfCode2017.Day07
+﻿namespace AdventOfCode2017
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using AdventOfCode2017.Day07;
 
-    // check if tree sort might be something that would easy this solution / performance.
-    public static class Day07
+    // TODO MarWolt: Check if tree sort might be something that would easy this solution / performance.
+    public static class SolutionDay07
     {
-        public static string Solution(List<string> programsInput)
+        // TODO MarWolt: Split this method in two, part01 & part02
+        public static string Part01And02(List<string> programsInput)
         {
             List<Program> programs = new List<Program>();
             foreach (var programLine in programsInput)

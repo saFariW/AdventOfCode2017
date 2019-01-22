@@ -1,10 +1,10 @@
-﻿namespace AdventOfCode2017.Day02
+﻿namespace AdventOfCode2017
 {
     using System.Collections.Generic;
 
-    public static class Day02
+    public static class SolutionDay02
     {
-        public static int Solution01(List<List<int>> lines)
+        public static int Part01(List<List<int>> lines)
         {
             int sum = 0;
 
@@ -32,7 +32,7 @@
             return sum;
         }
 
-        public static int Solution02(List<List<int>> lines)
+        public static int Part02(List<List<int>> lines)
         {
             int sum = 0;
 

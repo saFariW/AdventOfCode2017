@@ -1,10 +1,10 @@
-﻿namespace AdventOfCode2017.Day05
+﻿namespace AdventOfCode2017
 {
     using System.Collections.Generic;
 
-    public static class Day05
+    public static class SolutionDay05
     {
-        public static int Solution01(List<int> instructions)
+        public static int Part01(List<int> instructions)
         {
             int steps = 0;
             int offset = 0;
@@ -21,7 +21,7 @@
             return steps;
         }
 
-        public static int Solution02(List<int> instructions)
+        public static int Part02(List<int> instructions)
         {
             int steps = 0;
             int offset = 0;
