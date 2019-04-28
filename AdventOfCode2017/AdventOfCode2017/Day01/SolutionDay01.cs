@@ -1,9 +1,6 @@
 ﻿namespace AdventOfCode2017
 {
-    using System;
     using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
 
     public class SolutionDay01 : ISolution
     {
@@ -11,7 +8,7 @@
 
         public IEnumerable<object> Run(string input = null)
         {
-            input = input ?? InputRepository.GetDay01Input();
+            input = input ?? Properties.Resources.InputDay01;
             yield return this.Part01(input);
             yield return this.Part02(input);
         }
@@ -33,7 +30,7 @@
             {
                 if (input[i] == input[this.GetIndex(i, delta, input.Length)])
                 {
-                    sum += Convert.ToInt16(input[i].ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
+                    sum += int.Parse(input[i].ToString());
                 }
             }
 

@@ -7,21 +7,6 @@
 
     public static class InputRepository
     {
-        public static string GetDay01Input()
-        {
-            return Properties.Resources.InputDay01;
-        }
-
-        public static List<List<int>> GetDay02Input()
-        {
-            return Properties.Resources.InputDay02
-                .Split(Environment.NewLine)
-                .Select(x => x.Split('\t')
-                .Select(y => Convert.ToInt32(y, CultureInfo.InvariantCulture))
-                .ToList())
-                .ToList();
-        }
-
         public static int GetDay03Input()
         {
             return Convert.ToInt32(Properties.Resources.InputDay03, CultureInfo.InvariantCulture);
