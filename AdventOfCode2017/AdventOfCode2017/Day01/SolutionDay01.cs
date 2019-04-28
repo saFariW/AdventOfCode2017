@@ -3,10 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Linq;
 
     public class SolutionDay01 : ISolution
     {
-        public string GetName() => "Inverse Captcha";
+        public string GetName() => "Day 1: Inverse Captcha";
 
         public IEnumerable<object> Run(string input = null)
         {
@@ -39,16 +40,22 @@
             return sum;
         }
 
-        public int GetIndex(int currentIndex, int delta, int arrayLenght)
+        /// <summary>
+        /// Gets the next indexLocation for a ''round'' array.
+        /// Meaning if there would normally be an arrayOutOfBound exception, it starts counting back from the beginning.
+        /// </summary>
+        /// <param name="currentIndex">The current location/Index</param>
+        /// <param name="delta">The amount we want to jump forward in the array</param>
+        /// <param name="arrayLength">The length of the array</param>
+        /// <returns>The new location/index</returns>
+        public int GetIndex(int currentIndex, int delta, int arrayLength)
         {
-            int newIndex;
-            newIndex = currentIndex + delta;
-            if (newIndex >= arrayLenght)
+            if (currentIndex + delta >= arrayLength)
             {
-                newIndex -= arrayLenght;
+                return currentIndex + delta - arrayLength;
             }
 
-            return newIndex;
+            return currentIndex + delta;
         }
     }
 }

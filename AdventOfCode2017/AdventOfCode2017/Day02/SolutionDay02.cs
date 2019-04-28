@@ -1,38 +1,33 @@
 ﻿namespace AdventOfCode2017
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
-    public static class SolutionDay02
+    public class SolutionDay02 : ISolution
     {
-        public static int Part01(List<List<int>> lines)
+        public string GetName() => "Day 2: Corruption Checksum";
+
+        public IEnumerable<object> Run(string input = null)
         {
-            int sum = 0;
+            input = input ?? Properties.Resources.InputDay02;
 
-            foreach (var line in lines)
-            {
-                int maxValue = int.MinValue;
-                int minValue = int.MaxValue;
+            var formatedInput = input.Split(Environment.NewLine)
+                .Select(x => x.Split('\t')
+                    .Select(y => int.Parse(y))
+                    .ToList())
+                .ToList();
 
-                foreach (var cellValue in line)
-                {
-                    if (cellValue < minValue)
-                    {
-                        minValue = cellValue;
-                    }
-
-                    if (cellValue > maxValue)
-                    {
-                        maxValue = cellValue;
-                    }
-                }
-
-                sum += maxValue - minValue;
-            }
-
-            return sum;
+            yield return this.Part01(formatedInput);
+            yield return this.Part02(formatedInput);
         }
 
-        public static int Part02(List<List<int>> lines)
+        public int Part01(List<List<int>> lines)
+        {
+            return lines.Sum(line => line.Max() - line.Min());
+        }
+
+        public int Part02(List<List<int>> lines)
         {
             int sum = 0;
 

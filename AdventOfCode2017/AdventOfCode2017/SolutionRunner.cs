@@ -8,16 +8,16 @@
     {
         private static void Main(string[] args)
         {
-            var tsolutions = Assembly.GetEntryAssembly().GetTypes()
+            var tSolutions = Assembly.GetEntryAssembly().GetTypes()
                 .Where(t => t.GetTypeInfo().IsClass && typeof(ISolution).IsAssignableFrom(t))
                 .OrderBy(t => t.FullName)
                 .Select(t => Activator.CreateInstance(t) as ISolution)
                 .ToArray();
 
-            foreach (var tsolution in tsolutions)
+            foreach (var tSolution in tSolutions)
             {
-                var solutions = tsolution.Run();
-                Console.WriteLine($"Solution to {tsolution.GetName()} is: {string.Join(',', solutions.Select(x => x.ToString()))}");
+                var solutions = tSolution.Run();
+                Console.WriteLine($"Solution to {tSolution.GetName()} is: {string.Join(',', solutions.Select(x => x.ToString()))}");
             }
 
             Console.ReadKey();
