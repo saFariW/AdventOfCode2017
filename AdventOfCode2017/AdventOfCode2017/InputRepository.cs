@@ -7,11 +7,6 @@
 
     public static class InputRepository
     {
-        public static int GetDay03Input()
-        {
-            return Convert.ToInt32(Properties.Resources.InputDay03, CultureInfo.InvariantCulture);
-        }
-
         public static List<List<string>> GetDay04Input()
         {
             return Properties.Resources.InputDay04

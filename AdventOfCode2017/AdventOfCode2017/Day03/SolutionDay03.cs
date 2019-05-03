@@ -1,16 +1,22 @@
-﻿namespace AdventOfCode2017
+﻿namespace AdventOfCode2017.Day03
 {
     using System;
     using System.Collections.Generic;
 
-    public static class SolutionDay03
+    public class SolutionDay03 : ISolution
     {
-        private enum Direction
+        public string GetName() => "Day 3: Spiral Memory";
+
+        public IEnumerable<object> Run(string input = null)
         {
-            Up, Down, Left, Right
+            input = input ?? Properties.Resources.InputDay03;
+            int formattedInput = int.Parse(input);
+
+            yield return this.Part01(formattedInput);
+            yield return this.Part02(formattedInput);
         }
 
-        public static int Part01(int input)
+        public int Part01(int input)
         {
             var grid = CreateGrid(input);
             var middle = new Point(grid.Count / 2, grid.Count / 2);
@@ -32,7 +38,7 @@
             return Math.Abs(middle.X - pos.X) + Math.Abs(middle.Y - pos.Y);
         }
 
-        public static int Part02(int input)
+        public int Part02(int input)
         {
             var grid = CreateGrid(input);
             var middle = new Point(grid.Count / 2, grid.Count / 2);
@@ -42,7 +48,7 @@
 
             while (latestSetValue < input)
             {
-                grid[pos.X][pos.Y] = GetSurroundingValues(grid, pos);
+                grid[pos.X][pos.Y] = this.GetSurroundingValues(grid, pos);
                 latestSetValue = grid[pos.X][pos.Y];
 
                 var step = Step(grid, pos, direction);
@@ -87,7 +93,7 @@
         /// <param name="grid">The grid.</param>
         /// <param name="gridPoint">The point of which the surrounding values should be retrieved from.</param>
         /// <returns>The total of values surrounding the gridPoint.</returns>
-        private static int GetSurroundingValues(List<List<int>> grid, Point gridPoint)
+        private int GetSurroundingValues(List<List<int>> grid, Point gridPoint)
         {
             int sum = 0;
             sum += grid[gridPoint.X + 1][gridPoint.Y + 1];  // top right
@@ -177,19 +183,6 @@
             }
 
             return new Tuple<Point, Direction>(pos, direction);
-        }
-
-        private class Point
-        {
-            public Point(int x, int y)
-            {
-                this.X = x;
-                this.Y = y;
-            }
-
-            public int X { get; set; }
-
-            public int Y { get; set; }
         }
     }
 }
