@@ -1,6 +1,7 @@
 ﻿namespace AdventOfCode2017.Day01
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     public class SolutionDay01 : ISolution
     {
@@ -9,32 +10,26 @@
         public IEnumerable<object> Run(string input = null)
         {
             input = input ?? Properties.Resources.InputDay01;
-            yield return this.Part01(input);
-            yield return this.Part02(input);
+
+            // Changing the char's to integers
+            List<int> formattedInput = input.Select(c => c - '0').ToList();
+
+            // The '1' in this call specifies that the basicSolution method should compare the char with one, one position further in the input.
+            yield return this.BasicSolution(formattedInput, 1);
+
+            // Here we want to compare the char with one halfway away from the current char.
+            yield return this.BasicSolution(formattedInput, input.Length / 2);
         }
 
-        public int Part01(string input)
+        public int BasicSolution(List<int> input, int delta)
         {
-            return this.BasicSolution(input, 1);
+            int linqIndex = 0;
+            return input.Select(currentValue => this.GetValueIfSameAtIndex(this.GetIndex(linqIndex++, delta, input.Count), currentValue, input)).Sum();
         }
 
-        public int Part02(string input)
+        private int GetValueIfSameAtIndex(int index, int value, List<int> list)
         {
-            return this.BasicSolution(input, input.Length / 2);
-        }
-
-        public int BasicSolution(string input, int delta)
-        {
-            int sum = 0;
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (input[i] == input[this.GetIndex(i, delta, input.Length)])
-                {
-                    sum += int.Parse(input[i].ToString());
-                }
-            }
-
-            return sum;
+            return list.ElementAt(index) == value ? value : 0;
         }
 
         /// <summary>
