@@ -12,14 +12,14 @@
         {
             input = input ?? Properties.Resources.InputDay02;
 
-            var formatedInput = input.Split(Environment.NewLine)
+            var formattedInput = input.Split(Environment.NewLine)
                 .Select(x => x.Split('\t')
                     .Select(y => int.Parse(y))
                     .ToList())
                 .ToList();
 
-            yield return this.Part01(formatedInput);
-            yield return this.Part02(formatedInput);
+            yield return this.Part01(formattedInput);
+            yield return this.Part02(formattedInput);
         }
 
         public int Part01(List<List<int>> lines)

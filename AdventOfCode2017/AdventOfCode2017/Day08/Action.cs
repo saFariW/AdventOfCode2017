@@ -17,18 +17,18 @@
             this.value = value;
         }
 
-        public void Execute(ref IDictionary<string, int> exsistingRegisters, ref int highestHeldValueOverAllTime)
+        public void Execute(ref IDictionary<string, int> existingRegisters, ref int highestHeldValueOverAllTime)
         {
             int tmpValue = 0;
-            if (exsistingRegisters.TryGetValue(this.RegisterName, out int registerValue))
+            if (existingRegisters.TryGetValue(this.RegisterName, out int registerValue))
             {
                 tmpValue = this.inc ? registerValue + this.value : registerValue - this.value;
-                exsistingRegisters[this.RegisterName] = tmpValue;
+                existingRegisters[this.RegisterName] = tmpValue;
             }
             else
             {
                 tmpValue = this.inc ? this.value : 0 - this.value;
-                exsistingRegisters.Add(this.RegisterName, tmpValue);
+                existingRegisters.Add(this.RegisterName, tmpValue);
             }
 
             if (tmpValue > highestHeldValueOverAllTime)

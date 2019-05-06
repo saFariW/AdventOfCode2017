@@ -2,17 +2,15 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
 
     public static class InputRepository
     {
-
         public static List<int> GetDay06Input()
         {
             return Properties.Resources.InputDay06
                 .Split('\t')
-                .Select(x => Convert.ToInt32(x, CultureInfo.InvariantCulture))
+                .Select(x => Convert.ToInt32(x))
                 .ToList();
         }
 

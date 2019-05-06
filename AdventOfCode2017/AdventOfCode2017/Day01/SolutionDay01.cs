@@ -1,5 +1,6 @@
 ﻿namespace AdventOfCode2017.Day01
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -12,24 +13,19 @@
             input = input ?? Properties.Resources.InputDay01;
 
             // Changing the char's to integers
-            List<int> formattedInput = input.Select(c => c - '0').ToList();
+            List<int> formattedInput = input.Select(c => Convert.ToInt32(char.GetNumericValue(c))).ToList();
 
             // The '1' in this call specifies that the basicSolution method should compare the char with one, one position further in the input.
-            yield return this.BasicSolution(formattedInput, 1);
+            yield return this.BaseSolution(formattedInput, 1);
 
             // Here we want to compare the char with one halfway away from the current char.
-            yield return this.BasicSolution(formattedInput, input.Length / 2);
+            yield return this.BaseSolution(formattedInput, input.Length / 2);
         }
 
-        public int BasicSolution(List<int> input, int delta)
+        public int BaseSolution(List<int> input, int delta)
         {
             int linqIndex = 0;
-            return input.Select(currentValue => this.GetValueIfSameAtIndex(this.GetIndex(linqIndex++, delta, input.Count), currentValue, input)).Sum();
-        }
-
-        private int GetValueIfSameAtIndex(int index, int value, List<int> list)
-        {
-            return list.ElementAt(index) == value ? value : 0;
+            return input.Select(currentValue => GetValueIfSameAtIndex(this.GetIndex(linqIndex++, delta, input.Count), currentValue, input)).Sum();
         }
 
         /// <summary>
@@ -48,6 +44,11 @@
             }
 
             return currentIndex + delta;
+        }
+
+        private static int GetValueIfSameAtIndex(int index, int value, List<int> list)
+        {
+            return list.ElementAt(index) == value ? value : 0;
         }
     }
 }
