@@ -18,37 +18,14 @@
                     .ToList())
                 .ToList();
 
-            yield return this.Part01(formattedInput);
-            yield return this.Part02(formattedInput);
-        }
-
-        public int Part01(List<List<int>> lines)
-        {
-            return lines.Sum(line => line.Max() - line.Min());
-        }
-
-        public int Part02(List<List<int>> lines)
-        {
-            int sum = 0;
-
-            foreach (var line in lines)
-            {
-                for (int i = 0; i < line.Count; i++)
-                {
-                    for (int j = 0; j < line.Count; j++)
-                    {
-                        if (i != j)
-                        {
-                            if (line[i] % line[j] == 0)
-                            {
-                                sum += line[i] / line[j];
-                            }
-                        }
-                    }
-                }
-            }
-
-            return sum;
+            yield return formattedInput.Sum(line =>
+                line.Max() - line.Min());
+            yield return formattedInput.Sum(line =>
+                line.Select((t1, i) =>
+                    line.Where((t, j) => i != j)
+                        .Where(t => t1 % t == 0)
+                        .Sum(t => t1 / t))
+                    .Sum());
         }
     }
 }
