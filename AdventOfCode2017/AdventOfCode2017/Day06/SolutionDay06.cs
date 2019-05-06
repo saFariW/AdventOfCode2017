@@ -1,101 +1,65 @@
-﻿namespace AdventOfCode2017
+﻿namespace AdventOfCode2017.Day06
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class SolutionDay06
+    public class SolutionDay06 : ISolution
     {
-        public static int Part01(List<int> memoryBank)
+        public string GetName() => "Day 6: Memory Reallocation";
+
+        public IEnumerable<object> Run(string input = null)
+        {
+            input = input ?? Properties.Resources.InputDay06;
+            List<int> formattedInput = input
+                .Split('\t')
+                .Select(x => Convert.ToInt32(x))
+                .ToList();
+
+            var result = BaseSolution(formattedInput.ToList());
+
+            yield return result.Item1;
+            yield return result.Item2;
+        }
+
+        private static Tuple<int, int> BaseSolution(List<int> memoryBank)
         {
             int cycles = 0;
             List<List<int>> bankDb = new List<List<int>>();
 
-            while (GetOccuringBank(bankDb, memoryBank) == -1)
+            while (GetOccuringBankPos(bankDb, memoryBank) == -1)
             {
                 cycles++;
 
-                // perform deep copy
-                bankDb.Add(memoryBank.ConvertAll(x => x));
+                // Perform copy instead of ref
+                bankDb.Add(memoryBank.ToList());
 
-                int pos = GetLargestBankPos(memoryBank);
-                int bankSize = memoryBank[pos];
-                memoryBank[pos] = 0;
+                // gGet the index of the largest memoryBank.
+                int index = memoryBank.IndexOf(memoryBank.Max());
+                int bankSize = memoryBank[index];
+                memoryBank[index] = 0;
 
                 while (bankSize > 0)
                 {
-                    pos = GetNextPos(pos, memoryBank);
-                    memoryBank[pos]++;
+                    index = GetNextIndex(index, memoryBank);
+                    memoryBank[index]++;
                     bankSize--;
                 }
             }
 
-            return cycles;
+            return new Tuple<int, int>(cycles, cycles - GetOccuringBankPos(bankDb, memoryBank));
         }
 
-        public static int Part02(List<int> memoryBank)
+        private static int GetNextIndex(int currentPos, List<int> bank)
         {
-            int cycles = 0;
-            List<List<int>> bankDb = new List<List<int>>();
-
-            while (GetOccuringBank(bankDb, memoryBank) == -1)
-            {
-                cycles++;
-
-                // perform deep copy
-                bankDb.Add(memoryBank.ConvertAll(x => x));
-
-                int pos = GetLargestBankPos(memoryBank);
-                int bankSize = memoryBank[pos];
-                memoryBank[pos] = 0;
-
-                while (bankSize > 0)
-                {
-                    pos = GetNextPos(pos, memoryBank);
-                    memoryBank[pos]++;
-                    bankSize--;
-                }
-            }
-
-            return cycles - GetOccuringBank(bankDb, memoryBank);
-        }
-
-        private static int GetNextPos(int currentPos, List<int> bank)
-        {
-            if (currentPos + 1 < bank.Count())
-            {
+            if (currentPos + 1 < bank.Count)
                 return currentPos + 1;
-            }
-
             return 0;
         }
 
-        private static int GetLargestBankPos(List<int> bank)
+        private static int GetOccuringBankPos(List<List<int>> bankDb, List<int> bank)
         {
-            int pos = 0;
-            int banksize = int.MinValue;
-            for (int i = 0; i < bank.Count; i++)
-            {
-                if (bank[i] > banksize)
-                {
-                    banksize = bank[i];
-                    pos = i;
-                }
-            }
-
-            return pos;
-        }
-
-        private static int GetOccuringBank(List<List<int>> bankDb, List<int> bank)
-        {
-            for (int i = 0; i < bankDb.Count; i++)
-            {
-                if (bankDb[i].SequenceEqual(bank))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
+            return bankDb.FindIndex(x => x.SequenceEqual(bank));
         }
     }
 }

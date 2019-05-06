@@ -6,14 +6,6 @@
 
     public static class InputRepository
     {
-        public static List<int> GetDay06Input()
-        {
-            return Properties.Resources.InputDay06
-                .Split('\t')
-                .Select(x => Convert.ToInt32(x))
-                .ToList();
-        }
-
         public static List<string> GetDay07Input()
         {
             return Properties.Resources.InputDay07
