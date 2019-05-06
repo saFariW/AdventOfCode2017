@@ -1,8 +1,7 @@
-﻿namespace AdventOfCode2017
+﻿namespace AdventOfCode2017.Day08
 {
     using System.Collections.Generic;
     using System.Linq;
-    using AdventOfCode2017.Day08;
 
     public static class SolutionDay08
     {

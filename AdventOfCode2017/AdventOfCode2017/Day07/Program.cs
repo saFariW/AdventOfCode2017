@@ -28,7 +28,7 @@
         /// <returns>the total weight of this program.</returns>
         public int GetTotalWeight()
         {
-            if (this.subPrograms.Count() == 0)
+            if (!this.subPrograms.Any())
             {
                 return this.Weight;
             }

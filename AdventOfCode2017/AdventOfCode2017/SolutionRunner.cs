@@ -17,7 +17,7 @@
             foreach (var tSolution in tSolutions)
             {
                 var solutions = tSolution.Run();
-                Console.WriteLine($"Solution to {tSolution.GetName()} is: {string.Join(',', solutions.Select(x => x.ToString()))}");
+                Console.WriteLine($"Solution to {tSolution.GetName()} is: {string.Join(", ", solutions.Select(x => x.ToString()))}");
             }
 
             Console.ReadKey();

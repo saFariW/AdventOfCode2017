@@ -34,7 +34,7 @@
                     return registerValue != this.value;
                 case ConditionType.SmallerOrEqual:
                     return registerValue <= this.value;
-                case ConditionType.BiggerorEqual:
+                case ConditionType.BiggerOrEqual:
                     return registerValue >= this.value;
                 default:
                     throw new Exception($"Condition: {this.type.ToString()} is not supported");
