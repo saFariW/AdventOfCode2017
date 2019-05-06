@@ -37,7 +37,7 @@
                 case "<=":
                     return ConditionType.SmallerOrEqual;
                 case ">=":
-                    return ConditionType.BiggerorEqual;
+                    return ConditionType.BiggerOrEqual;
                 default:
                     throw new Exception($"String input is not a supported condition: {stringconditon}");
             }

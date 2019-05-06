@@ -1,18 +1,28 @@
 ﻿namespace AdventOfCode2017.Day08
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class SolutionDay08
+    public class SolutionDay08 : ISolution
     {
-        public static string Part01And02(List<string> input)
+        public string GetName() => "Day 8: I Heard You Like Registers";
+
+        public IEnumerable<object> Run(string input = null)
         {
+            input = input ?? Properties.Resources.InputDay08;
+
+            List<string> formattedInput = input
+                .Split(Environment.NewLine)
+                .ToList();
+
             int maxValueOverAllTime = int.MinValue;
             IDictionary<string, int> registers = new Dictionary<string, int>();
 
-            input.ForEach(x => new InputRow(x).Execute(ref registers, ref maxValueOverAllTime));
+            formattedInput.ForEach(x => new InputRow(x).Execute(ref registers, ref maxValueOverAllTime));
 
-            return $"the current highest value in registers is: {registers.Values.Max()}, and the max value over time was: {maxValueOverAllTime}";
+            yield return registers.Values.Max();
+            yield return maxValueOverAllTime;
         }
     }
 }

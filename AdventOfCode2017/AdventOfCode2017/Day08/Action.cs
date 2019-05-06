@@ -1,7 +1,5 @@
 ﻿namespace AdventOfCode2017.Day08
 {
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
 
     public class Action
