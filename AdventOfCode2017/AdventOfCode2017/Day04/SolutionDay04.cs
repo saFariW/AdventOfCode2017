@@ -22,7 +22,7 @@
             yield return BaseSolution(formattedInput, list => !list.GroupBy(word => word).Any(g => g.Count() > 1));
 
             // The little trick i perform here is ill sort the char's per word, and count how many same words there are in one line. If more than one it does not comply.
-            yield return BaseSolution(formattedInput, list => !list.Select(y => string.Join(string.Empty, y.ToCharArray().OrderBy(x => x))).GroupBy(word => word).Any(group => group.Count() > 1));
+            yield return BaseSolution(formattedInput, list => !list.Select(y => string.Concat(y.ToCharArray().OrderBy(x => x))).GroupBy(word => word).Any(group => group.Count() > 1));
         }
 
         private static int BaseSolution(List<List<string>> passPhrases, Func<List<string>, bool> passPhraseCheck)
