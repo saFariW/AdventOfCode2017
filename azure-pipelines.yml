@@ -18,7 +18,7 @@ steps:
 
 - task: DotNetCoreInstaller@0
   inputs:
-    version: '2.2.0'
+    version: '2.2.203'
     
 - script: dotnet restore
   
