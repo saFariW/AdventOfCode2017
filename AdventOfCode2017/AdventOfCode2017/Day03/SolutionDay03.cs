@@ -48,7 +48,7 @@
 
             while (latestSetValue < input)
             {
-                grid[pos.X][pos.Y] = this.GetSurroundingValues(grid, pos);
+                grid[pos.X][pos.Y] = GetSurroundingValues(grid, pos);
                 latestSetValue = grid[pos.X][pos.Y];
 
                 var step = Step(grid, pos, direction);
@@ -93,7 +93,7 @@
         /// <param name="grid">The grid.</param>
         /// <param name="gridPoint">The point of which the surrounding values should be retrieved from.</param>
         /// <returns>The total of values surrounding the gridPoint.</returns>
-        private int GetSurroundingValues(List<List<int>> grid, Point gridPoint)
+        private static int GetSurroundingValues(List<List<int>> grid, Point gridPoint)
         {
             int sum = 0;
             sum += grid[gridPoint.X + 1][gridPoint.Y + 1];  // top right

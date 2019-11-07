@@ -1,67 +1,53 @@
-﻿namespace AdventOfCode2017
+﻿namespace AdventOfCode2017.Day07
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
-    using System.Text.RegularExpressions;
-    using AdventOfCode2017.Day07;
 
-    // TODO MarWolt: Check if tree sort might be something that would easy this solution / performance.
-    public static class SolutionDay07
+    public class SolutionDay07 : ISolution
     {
-        // TODO MarWolt: Split this method in two, part01 & part02
-        public static string Part01And02(List<string> programsInput)
+        public string GetName() => "Day 7: Recursive Circus";
+
+        public IEnumerable<object> Run(string input = null)
         {
-            List<Program> programs = new List<Program>();
-            foreach (var programLine in programsInput)
-            {
-                programs.Add(ParseProgramInput(programLine));
-            }
+            input = input ?? Properties.Resources.InputDay07;
 
-            while (programs.Count > 1)
+            List<Disc> discs = input
+                .Split(Environment.NewLine)
+                .Select(x => new Disc(x))
+                .ToList();
+
+            while (discs.Count() > 1)
             {
-                for (int i = 0; i < programs.Count; i++)
+                for (int i = 0; i < discs.Count; i++)
                 {
-                    if (programs[i] == null)
-                    {
+                    if (discs[i] == null)
                         continue;
-                    }
 
-                    for (int j = 0; j < programs.Count; j++)
+                    for (int j = 0; j < discs.Count; j++)
                     {
-                        if (programs[j] == null)
-                        {
+                        if (discs[j] == null || i == j)
                             continue;
-                        }
 
-                        if (programs[i].TryInsertSubProgram(programs[j]))
-                        {
-                            programs[j] = null;
-                        }
+                        if (discs[i].TryInsertDisc(discs[j]))
+                            discs[j] = null;
                     }
                 }
 
-                programs.RemoveAll(x => x == null);
+                discs.RemoveAll(x => x == null);
             }
 
-            var program = programs.First();
-            return "Name: " + program.Name + " Weight: " + program.GetTotalWeight();
-        }
+            yield return discs.First().name;
 
-        private static Program ParseProgramInput(string inputLine)
-        {
-            var parsedInputLine = Regex.Matches(inputLine, "[0-9a-z]+")
-                .Select(x => x.ToString())
-                .ToList();
+            var flatDiscs = Disc.Flatten(discs.First(), new List<Disc>());
+            Disc faultyDisc = flatDiscs.Single(disc => disc.children.Select(y => y.GetWeight()).Distinct().Count() > 1);
 
-            List<Program> subPrograms = new List<Program>();
-            for (int i = 2; i < parsedInputLine.Count; i++)
-            {
-                subPrograms.Add(new Program(parsedInputLine[i], 0, new List<Program>()));
-            }
+            // TODO split this piece of code in smaller pieces of code just because kek
+            int correctSubWeight = faultyDisc.children.GroupBy(x => x.GetWeight())
+                .OrderByDescending(x => x.Count())
+                .First().Key;
 
-            return new Program(parsedInputLine[0], Convert.ToInt32(parsedInputLine[1], CultureInfo.InvariantCulture), subPrograms);
+            yield return Math.Abs((correctSubWeight * faultyDisc.children.Count()) - faultyDisc.GetWeight());
         }
     }
 }

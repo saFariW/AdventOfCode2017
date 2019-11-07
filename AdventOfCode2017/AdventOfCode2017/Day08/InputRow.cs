@@ -13,7 +13,7 @@
         {
             var x = stringinput.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
             this.action = new Action(x[0], x[1] == "inc", int.Parse(x[2]));
-            this.condition = new Condition(x[4], this.conditionParse(x[5]), int.Parse(x[6]));
+            this.condition = new Condition(x[4], this.ConditionParse(x[5]), int.Parse(x[6]));
         }
 
         public void Execute(ref IDictionary<string, int> currentRegisters, ref int highestHeldValueOverAllTime)
@@ -22,7 +22,7 @@
                 this.action.Execute(ref currentRegisters, ref highestHeldValueOverAllTime);
         }
 
-        private ConditionType conditionParse(string stringconditon)
+        private ConditionType ConditionParse(string stringconditon)
         {
             switch (stringconditon)
             {
