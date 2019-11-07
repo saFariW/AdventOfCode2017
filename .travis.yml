@@ -1,6 +1,6 @@
 language: csharp
 mono: none
-dotnet: 2.0.000
+dotnet: 2.1.502
 solution: AdventOfCode2017.sln
 script:
   - dotnet restore
