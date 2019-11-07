@@ -1,7 +1,8 @@
 language: csharp
 mono: none
-dotnet: 2.1.502
+dotnet: 2.0.0
 solution: AdventOfCode2017.sln
 script:
+  - cd .\AdventOfCode2017
   - dotnet restore
   - dotnet test
